@@ -7,10 +7,11 @@ while($TableauDunTuple = $ObjetResultatDeRequeteBrut->fetch())
 echo $TableauDunTuple['nom'];
 ?>
 <div>
-<form action="" method="post">
-Login:<input type="text" name="prenom" required/>
-Mot de passe:<input type="password" name="mdp" required/>
-<input type="submit" name="Valider" /></post>
+    <form action="" method="post">
+        Login:<input type="text" name="prenom" required/>
+        Mot de passe:<input type="password" name="mdp" required/>
+        <input type="submit" name="Valider" />
+    </post>
 </div>
 <?php
 $_SESSION["co"] = false;
