@@ -5,6 +5,7 @@ if($_SESSION["co"] == true){
     echo $_SESSION["prenom"];
 
     ?>
+    <!-- formulaire de deconnexion -->
 <form action="" method="post">
 <p>
  <button type="submit" name="deco">Deconnexion</button> 

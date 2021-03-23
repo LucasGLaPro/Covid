@@ -6,7 +6,7 @@ $ObjetResultatDeRequeteBrut = $MaBase->query("SELECT * FROM `user` ORDER BY nom 
 while($TableauDunTuple = $ObjetResultatDeRequeteBrut->fetch())
 echo $TableauDunTuple['nom'];
 ?>
-<div>
+<div> <!-- formulaire --> 
     <form action="" method="post">
         Login:<input type="text" name="prenom" required/>
         Mot de passe:<input type="password" name="mdp" required/>
@@ -14,6 +14,7 @@ echo $TableauDunTuple['nom'];
     </post>
 </div>
 <?php
+//verification des utlisateur.
 $_SESSION["co"] = false;
 if(isset($_POST["Valider"])){
     }
@@ -21,7 +22,7 @@ if(isset($_POST["Valider"])){
         $ObjetResultatDeRequeteBrut = $MaBase->query("SELECT * FROM `user` WHERE `nom`='".$_POST["prenom"]."' AND `Mdp` = '".$_POST["mdp"]."'"); 
         if($ObjetResultatDeRequeteBrut->rowCount()>=1){
             $_SESSION["co"] = true;
-            header('Location: logged.php');  
+            header('Location: logged.php'); //redirige sur la page logged.php.  
             $_SESSION["prenom"] = $_POST["prenom"];
         }
         else{
