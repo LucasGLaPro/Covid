@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+require "class.php";
 $MaBase = new PDO('mysql:host=mysql-lucaslapro.alwaysdata.net; dbname=lucaslapro_virus; charset=utf8','229070_lucas', 'lucaslapro');
 $ObjetResultatDeRequeteBrut = $MaBase->query("SELECT * FROM `user` ORDER BY nom ASC");
 while($TableauDunTuple = $ObjetResultatDeRequeteBrut->fetch())
@@ -17,19 +17,8 @@ echo $TableauDunTuple['nom'];
 //verification des utlisateur.
 $_SESSION["co"] = false;
 if(isset($_POST["Valider"])){
+    $user = new user($_POST['prenom'], $_POST['mdp'],$MaBase);
+    $user->Connexion();
     }
-    if(isset($_POST["mdp"])) {
-        $ObjetResultatDeRequeteBrut = $MaBase->query("SELECT * FROM `user` WHERE `nom`='".$_POST["prenom"]."' AND `Mdp` = '".$_POST["mdp"]."'"); 
-        if($ObjetResultatDeRequeteBrut->rowCount()>=1){
-            $_SESSION["co"] = true;
-            header('Location: logged.php'); //redirige sur la page logged.php.  
-            $_SESSION["prenom"] = $_POST["prenom"];
-        }
-        else{
-            echo"Echec de connection "; 
-        }
 
-    } 
-    else{
-        echo"";}
 ?>
